@@ -1,0 +1,22 @@
+body{
+    background-color: cornsilk;
+    color: dimgrey;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 100%;
+    font-weight: bold;
+    line-height: 150%;
+}
+
+.box1{
+    background-color: dimgrey;
+    color: cornsilk;
+    margin: 10%;
+    padding: .005%;
+}
+
+.container{
+    width: 80%;
+    margin: auto;
+
+
+}
