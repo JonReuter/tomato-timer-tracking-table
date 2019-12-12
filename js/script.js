@@ -1,5 +1,5 @@
-
-//js for slides on method page
+/*
+js for slides on method page
 
 const  slide = document.querySelector('.slides');
 const slideImgs = Array.from(slide.children);
@@ -28,8 +28,7 @@ rBtn.addEventListener('click', () => {
   }
 })
 
-
-
+*/
 
 
 /*
