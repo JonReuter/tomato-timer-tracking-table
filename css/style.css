@@ -157,15 +157,14 @@ header nav ul li a {
 }
 
 #indexMain{
-    display: inline-flex;
-    position: relative;
-    justify-content: center;
+    display: block;
+text-align: center;
 }
 
-#indexMain #index-img {
-    width: 60%;
-}
-
+#index-img {
+display: inline-block;
+ width: 80%;
+)
 /*
 Slider for method page
 */
