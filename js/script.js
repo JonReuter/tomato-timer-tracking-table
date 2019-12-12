@@ -145,3 +145,9 @@ function displayTimeLeft (timeLeft){ //displays time on the input
 }
 
 pauseBtn.addEventListener('click',pauseTimer);
+
+
+
+
+
+
