@@ -1,7 +1,7 @@
 /*
 js for slides on method page
-*/
-const slide = document.querySelector('.slides');
+
+const  slide = document.querySelector('.slides');
 const slideImgs = Array.from(slide.children);
 
 //buttons
@@ -14,90 +14,92 @@ const size = slideImgs[0].getBoundingClientRect().width;
 
 //event listen for buttons
 
-lBtn.addEventListener('click',()=>{
-    if(count>0){
+lBtn.addEventListener('click', () => {
+  if (count > 0) {
     count--;
     slide.style.transform = 'translateX(' + (-size * count) + 'px)';
-}})
+  }
+})
 
-rBtn.addEventListener('click',()=>{
-    if(count<5){
+rBtn.addEventListener('click', () => {
+  if (count < 5) {
     count++;
     slide.style.transform = 'translateX(' + (-size * count) + 'px)';
-}})
+  }
+})
 
-
+*/
 
 
 /*
 //circle start
-let progressBar = document.querySelector('.e-c-progress');
-let indicator = document.getElementById('e-indicator');
+*/
+let progressBar = document.querySelector('.circProgress');
 let pointer = document.getElementById('e-pointer');
 let length = Math.PI * 2 * 100;
 
 progressBar.style.strokeDasharray = length;
 
-
-
 function update(value, timePercent) {
   var offset = - length - length * value / (timePercent);
-  progressBar.style.strokeDashoffset = offset; 
-  pointer.style.transform = `rotate(${360 * value / (timePercent)}deg)`; 
+  progressBar.style.strokeDashoffset = offset;
+  pointer.style.transform = `rotate(${360 * value / (timePercent)}deg)`;
 };
 
-//circle ends
-const displayOutput = document.querySelector('.display-remain-time')
+//circle ends, timer starts
+
+const display = document.querySelector('.display-remain-time')
 const startBtn = document.getElementById('start');
-const stopBtn = document.getElementById('start');
+const stopBtn = document.getElementById('stop');
+const now = Date.now();
 
-let intervalTimer;
+let interval;
 let timeLeft;
-let wholeTime = .5 * 60; 
+let wholeTime = 25 * 60;
 let isStarted = false;
-let isStopped = false;
 
-
-update(wholeTime,wholeTime);
+update(wholeTime, wholeTime);
 displayTimeLeft(wholeTime);
 
-function changeWholeTime(seconds){
-  if ((wholeTime + seconds) > 0){
-    wholeTime += seconds;
-    update(wholeTime,wholeTime);
-  }
-}
-
-
-function timer (seconds){ //counts time, takes seconds
+function timer(seconds) {
   let remainTime = Date.now() + (seconds * 1000);
   displayTimeLeft(seconds);
-  
-  intervalTimer = setInterval(function(){
+
+  interval = setInterval(() => {
     timeLeft = Math.round((remainTime - Date.now()) / 1000);
-    if(timeLeft < 0){
-      clearInterval(intervalTimer);
+    //check if out of time
+    if (timeLeft <= 0) {
+      clearInterval(interval);
       isStarted = false;
-      });
-      displayTimeLeft(wholeTime);
-      return ;
-    }
-    displayTimeLeft(timeLeft);
+  displayTimeLeft(wholeTime);
+  return;
+}
+//otherwise display time
+displayTimeLeft(timeLeft);
   }, 1000);
 }
 
-
-function displayTimeLeft (timeLeft){ //displays time on the input
+//displays time on the clock
+function displayTimeLeft(timeLeft) {
   let minutes = Math.floor(timeLeft / 60);
   let seconds = timeLeft % 60;
-  let displayString = `${minutes < 10 ? '0' : ''}${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
-  displayOutput.textContent = displayString;
+  let displayTime = `${minutes < 10 ? '0' : ''}${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+  display.textContent = displayTime;
   update(timeLeft, wholeTime);
 }
 
-*/
+startBtn.addEventListener('click', () => {
+  console.log('clicked')
+if (isStarted === false) {
+  timer(wholeTime);
+  isStarted = true;
+}});
 
 
-
-
+stopBtn.addEventListener('click', () => {
+  console.log('clicked')
+  clearInterval(interval);
+      isStarted = false;
+  displayTimeLeft(wholeTime);
+});
 

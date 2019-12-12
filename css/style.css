@@ -312,7 +312,7 @@ background: tomato;
 }
   
   
-  .controlls {
+  .controls {
   display: grid;
   grid-template-columns:repeat(3, 1fr);
   grid-template-rows:repeat(3, 1fr);
@@ -327,7 +327,7 @@ background: tomato;
     color:tomato;
     grid-column: 2/3;
     grid-row: 2/3;
-    text-shadow: 2px 2px 10px gray;
+    text-shadow: 2px 2px 12px dimgray;
   }
   
   .circle{
@@ -335,13 +335,13 @@ background: tomato;
     grid-column: 2/3;
     align-content: center;
   }
-  .e-c-base {
+  .circBase {
     fill: none;
     stroke: gray;
     stroke-width: 8px
   }
   
-  .e-c-progress {
+  .circProgress {
     fill: none;
     stroke: tomato;
     stroke-width: 8px;
@@ -351,7 +351,7 @@ background: tomato;
   .e-c-pointer {
     fill: lime;
     stroke:tomato;
-    stroke-width: 3px;
+    stroke-width: 2px;
   }
   
   #e-pointer { transition: transform 0.7s; }
@@ -363,7 +363,8 @@ background: tomato;
     grid-template-rows: repeat(3, 1fr);
     grid-columns: 3/4;
     grid-row: 1/2;
-    padding-left: 15%;
+    justify-items: end;
+
   }
 
   #start{    
