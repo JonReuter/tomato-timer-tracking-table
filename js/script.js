@@ -1,9 +1,8 @@
 /*
 js for slides on method page
 */
-
 const slide = document.querySelector('.slides');
-const slideImgs = document.querySelectorAll('.slides img');
+const slideImgs = Array.from(slide.children);
 
 //buttons
 const lBtn = document.querySelector('#lBtn');
@@ -11,28 +10,26 @@ const rBtn = document.querySelector('#rBtn');
 
 //a counter
 let count = 0
-const size = slideImgs[0].clientWidth;
-
-
+const size = slideImgs[0].getBoundingClientRect().width;
 
 //event listen for buttons
 
-
 lBtn.addEventListener('click',()=>{
     if(count>0){
-    count--
-    slide.style.transform = 'translateX(' + (-size * counter) + 'px)';
+    count--;
+    slide.style.transform = 'translateX(' + (-size * count) + 'px)';
 }})
 
 rBtn.addEventListener('click',()=>{
-    if(count<5){}
-    count++
-    slide.style.transform = 'translateX(' + (-size * counter) + 'px)';
+    if(count<5){
+    count++;
+    slide.style.transform = 'translateX(' + (-size * count) + 'px)';
 }})
 
 
 
 
+/*
 //circle start
 let progressBar = document.querySelector('.e-c-progress');
 let indicator = document.getElementById('e-indicator');
@@ -40,6 +37,8 @@ let pointer = document.getElementById('e-pointer');
 let length = Math.PI * 2 * 100;
 
 progressBar.style.strokeDasharray = length;
+
+
 
 function update(value, timePercent) {
   var offset = - length - length * value / (timePercent);
@@ -49,17 +48,17 @@ function update(value, timePercent) {
 
 //circle ends
 const displayOutput = document.querySelector('.display-remain-time')
-const pauseBtn = document.getElementById('pause');
-const setterBtns = document.querySelectorAll('button[data-setter]');
+const startBtn = document.getElementById('start');
+const stopBtn = document.getElementById('start');
 
 let intervalTimer;
 let timeLeft;
-let wholeTime = 0.5 * 60; // manage this to set the whole time 
-let isPaused = false;
+let wholeTime = .5 * 60; 
 let isStarted = false;
+let isStopped = false;
 
 
-update(wholeTime,wholeTime); //refreshes progress bar
+update(wholeTime,wholeTime);
 displayTimeLeft(wholeTime);
 
 function changeWholeTime(seconds){
@@ -69,26 +68,6 @@ function changeWholeTime(seconds){
   }
 }
 
-for (var i = 0; i < setterBtns.length; i++) {
-    setterBtns[i].addEventListener("click", function(event) {
-        var param = this.dataset.setter;
-        switch (param) {
-            case 'minutes-plus':
-                changeWholeTime(1 * 60);
-                break;
-            case 'minutes-minus':
-                changeWholeTime(-1 * 60);
-                break;
-            case 'seconds-plus':
-                changeWholeTime(1);
-                break;
-            case 'seconds-minus':
-                changeWholeTime(-1);
-                break;
-        }
-      displayTimeLeft(wholeTime);
-    });
-}
 
 function timer (seconds){ //counts time, takes seconds
   let remainTime = Date.now() + (seconds * 1000);
@@ -99,42 +78,14 @@ function timer (seconds){ //counts time, takes seconds
     if(timeLeft < 0){
       clearInterval(intervalTimer);
       isStarted = false;
-      setterBtns.forEach(function(btn){
-        btn.disabled = false;
-        btn.style.opacity = 1;
       });
       displayTimeLeft(wholeTime);
-      pauseBtn.classList.remove('pause');
-      pauseBtn.classList.add('play');
       return ;
     }
     displayTimeLeft(timeLeft);
   }, 1000);
 }
-function pauseTimer(event){
-  if(isStarted === false){
-    timer(wholeTime);
-    isStarted = true;
-    this.classList.remove('play');
-    this.classList.add('pause');
-    
-    setterBtns.forEach(function(btn){
-      btn.disabled = true;
-      btn.style.opacity = 0.5;
-    });
 
-  }else if(isPaused){
-    this.classList.remove('play');
-    this.classList.add('pause');
-    timer(timeLeft);
-    isPaused = isPaused ? false : true
-  }else{
-    this.classList.remove('pause');
-    this.classList.add('play');
-    clearInterval(intervalTimer);
-    isPaused = isPaused ? false : true ;
-  }
-}
 
 function displayTimeLeft (timeLeft){ //displays time on the input
   let minutes = Math.floor(timeLeft / 60);
@@ -144,8 +95,7 @@ function displayTimeLeft (timeLeft){ //displays time on the input
   update(timeLeft, wholeTime);
 }
 
-pauseBtn.addEventListener('click',pauseTimer);
-
+*/
 
 
 
