@@ -158,13 +158,13 @@ header nav ul li a {
 
 #indexMain{
     display: block;
-text-align: center;
+    text-align: center;
 }
 
 #index-img {
-display: inline-block;
- width: 80%;
-)
+  display: inline-block;
+  width: 80%;
+}
 /*
 Slider for method page
 */
@@ -295,8 +295,6 @@ font-family: Arial;
 font-weight: 600;
 font-size: 200%;
 background: tomato;
-
-
 }
 
 .timer{
